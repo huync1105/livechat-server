@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import userRouter from '../route/user';
+import roomRouter from '../route/room';
 import mongoose from 'mongoose';
 
 const app = express();
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
   res.send("hello");
 })
 app.use('/user', userRouter);
+app.use('/room', roomRouter);
 
 // db connect
 mongoose.connect(`${url}`, { dbName: dbName});
