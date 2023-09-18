@@ -8,7 +8,7 @@ import mongoose from 'mongoose';
 
 const app = express();
 const port = process.env.PORT || 3000;
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb+srv://huync1105:64719199%40huy@cluster0.t2ebu.mongodb.net';
 const dbName = 'livechat';
 
 // middleware
@@ -24,7 +24,8 @@ app.use('/user', userRouter);
 app.use('/room', roomRouter);
 
 // db connect
-mongoose.connect(`${url}`, { dbName: dbName});
+const connect = mongoose.connect(`${url}`, { dbName: dbName, });
+connect.then(() => console.log("Connected to db!"))
 
 // run server
 app.listen(port, () => {
